@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto Confitec", "Projeto Confitec.csproj", "{D4EDF18C-1333-4E61-9AA6-913B6C52C16D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoConfitec", "ProjetoConfitec.csproj", "{D4EDF18C-1333-4E61-9AA6-913B6C52C16D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,6 @@
-﻿namespace Projeto_Confitec.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Projeto_Confitec.Models
 {
     public class Usuario
     {
@@ -14,6 +16,7 @@
             NivelEscolarId = nivelEscolarId;
 
         }
+        [Key]
         public int IdUsuario { get; set; }
 
         public string NomeUsuario { get; set; }
