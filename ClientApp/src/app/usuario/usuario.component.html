@@ -1,0 +1,39 @@
+<div class="container m-4">
+    <h1>Lista de Usuários</h1>
+
+    <div class="d-flex justify-content-end m-4">
+         <button type="button" class="btn btn-primary" (click)="inserir()">Inserir</button>
+     </div>
+
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" >ID</th>
+        <th scope="col">Nome Usuário</th>
+        <th scope="col">Sobrenome Usuário</th>
+        <th scope="col">Email</th>
+        <th scope="col">Data de nascimento</th>
+        <th scope="col">Nível de escolaridade</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarioService.usuarios$ | async; trackBy: trackporUsuario">
+        <th scope="row">{{ usuario.idUsuario }}</th>
+        <td>{{ usuario.nomeUsuario }}</td>
+        <td>{{ usuario.sobrenomeUsuario }}</td>
+        <td>{{ usuario.emailUsuario }}</td>
+        <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ procurarNivelEscolar(usuario.nivelEscolarId) }}</td>
+        <td >
+          <button type="button" class="btn btn-outline-dark" (click)="modificar(usuario)">
+          </button>  
+          <button type="button" class="btn btn-outline-dark" (click)="excluir(usuario)">
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+

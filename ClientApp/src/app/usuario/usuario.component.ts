@@ -1,56 +1,54 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UserService } from './user.service';
+import { UsuarioService } from './usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddUserComponent } from './add-user/add-user.component';
+import { AdicionarUsuarioComponent } from './adicionar-usuario/adicionar-usuario.component';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { UserRemoveComponent } from './user-remove/user-remove.component';
-import { Usuario } from './user.model';
+import { RemoverUsuarioComponent } from './remover-usuario/remover-usuario.component';
+import { Usuario } from './usuario.model';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsuarioComponent implements OnInit {
-
-  niveisEscolares = [{"id": 1, "descricao": "Infantil"},
-  {"id": 2, "descricao": "Fundamental"},
-  {"id": 3, "descricao": "Médio"},
-  {"id": 4, "descricao": "Superior"}
+  niveisEscolares = [
+    { id: 1, descricao: 'Infantil' },
+    { id: 2, descricao: 'Fundamental' },
+    { id: 3, descricao: 'Médio' },
+    { id: 4, descricao: 'Superior' },
   ];
 
-  usersTrackFn = (i, user) => user.id;
+  trackporUsuario = (index: number, item: Usuario) => item.idUsuario;
 
-  constructor(public userService: UserService,
+  constructor(
+    public usuarioService: UsuarioService,
     private modalService: NgbModal
-    ) { }
+  ) {}
 
-  ngOnInit() {
-    
+  ngOnInit() {}
+
+  public inserir() {
+    const modalRef = this.modalService.open(AdicionarUsuarioComponent);
+    modalRef.componentInstance.title = 'Inserir';
   }
 
-
-  public incluir(){
-    const modalRef = this.modalService.open(AddUserComponent);
-    modalRef.componentInstance.title = 'Incluir';
+  public modificar(usuario: Usuario) {
+    const modalRef = this.modalService.open(AdicionarUsuarioComponent);
+    modalRef.componentInstance.title = 'Alterar';
+    modalRef.componentInstance.usuario = usuario;
   }
 
-  public modificar(usuario: Usuario){
-    const modalRef = this.modalService.open(AddUserComponent);
-     modalRef.componentInstance.title = 'Alterar';
-     modalRef.componentInstance.user = user;
+  public excluir(usuario: Usuario) {
+    const modalRef = this.modalService.open(RemoverUsuarioComponent);
+    modalRef.componentInstance.usuario = usuario;
   }
 
-  public excluir(user: User){
-    console.log(user);
-    const modalRef = this.modalService.open(UserRemoveComponent);
-    modalRef.componentInstance.user = user;
-  }
+  procurarNivelEscolar(id: number): string {
+    const nivel = this.niveisEscolares.find((d) => d.id === id);
 
-  findGrade(id: number) : string{
-    const degree = this.degrees.find(d => d.id === id);
-    return degree ? degree.descricao : null;
+    if (nivel) return nivel.descricao;
+    else return '';
   }
-
 }

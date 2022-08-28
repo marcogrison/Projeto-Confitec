@@ -3,7 +3,7 @@ import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsuarioComponent } from './usuario.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { UsuarioAdicionarComponent } from './adicionar-usuario/adicionar-usuario.component';
+import { AdicionarUsuarioComponent } from './adicionar-usuario/adicionar-usuario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RemoverUsuarioComponent } from './remover-usuario/remover-usuario.component';
 
@@ -18,10 +18,10 @@ import { RemoverUsuarioComponent } from './remover-usuario/remover-usuario.compo
   ],
   declarations: [
     UsuarioComponent,
-    UsuarioAdicionarComponent,
+    AdicionarUsuarioComponent,
     RemoverUsuarioComponent,
   ],
-  entryComponents: [UsuarioAdicionarComponent, 
+  entryComponents: [AdicionarUsuarioComponent, 
     RemoverUsuarioComponent
   ]
 })
